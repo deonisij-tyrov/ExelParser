@@ -48,7 +48,6 @@ public class FormExel {
                     row.createCell(9).setCellValue(secondFileClass.getBuyer());
                     row.createCell(11).setCellValue(secondFileClass.getDocNumbers());
                     row.createCell(12).setCellValue(firstFileClassList.get(i).getDocNumber());
-                    row.createCell(13).setCellValue("test");
                     n++;
                 }
             }
