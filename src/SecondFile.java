@@ -1,7 +1,7 @@
 import lombok.Data;
 
 @Data
-public class SecondFileClass {
+public class SecondFile {
     private int id;
     private String state;
     private String date;
@@ -9,7 +9,7 @@ public class SecondFileClass {
     private String buyer;
     private String docNumbers;
 
-    public SecondFileClass(int id, String state, String date, String email, String buyer, String docNumbers) {
+    public SecondFile(int id, String state, String date, String email, String buyer, String docNumbers) {
         this.id = id;
         this.state = state;
         this.date = date;

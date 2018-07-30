@@ -11,9 +11,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SecondFileLoader {
-    private List<SecondFileClass> cells;
+    private List<SecondFile> cells;
 
-    public List<SecondFileClass> getCells() {
+    public List<SecondFile> getCells() {
         return cells;
     }
 
@@ -64,7 +64,7 @@ public class SecondFileLoader {
             }
             if (docNumbers.toString() != "" && docNumbers.toString() != null) {
                 try {
-                    cells.add(new SecondFileClass(Integer.parseInt(id.toString().substring(1)), state.toString(), date.toString(), email.toString(), buyer.toString(), docNumbers.toString()));
+                    cells.add(new SecondFile(Integer.parseInt(id.toString().substring(1)), state.toString(), date.toString(), email.toString(), buyer.toString(), docNumbers.toString()));
                 } catch (NumberFormatException e) {
 //                    e.printStackTrace();
 //                    System.out.println(e.getLocalizedMessage());

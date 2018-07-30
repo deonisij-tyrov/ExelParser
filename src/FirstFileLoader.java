@@ -11,9 +11,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class FirstFileLoader {
-    private List<FirstFileClass> cellMap;
+    private List<FirstFile> cellMap;
 
-    public List<FirstFileClass> getCellMap() {
+    public List<FirstFile> getCellMap() {
         return cellMap;
     }
 
@@ -61,7 +61,7 @@ public class FirstFileLoader {
             }
             try {
 
-                cellMap.add(new FirstFileClass(docRealizeParser(docRealize.toString()), imei, sum.toString(), nomenclature.toString(), brunch(brunch)));
+                cellMap.add(new FirstFile(docRealizeParser(docRealize.toString()), imei, sum.toString(), nomenclature.toString(), brunch(brunch)));
             } catch (NumberFormatException e) {
 //                System.out.println(e.getLocalizedMessage());
                 System.out.printf("%s %s %s %s \n", docRealize.toString(), imei.toString(), sum.toString(), nomenclature.toString());
@@ -80,10 +80,10 @@ public class FirstFileLoader {
     }
 
     private String brunch(Cell cell) {
-        if (cell.getStringCellValue().equalsIgnoreCase("Смартфоны")) {
-            return "Смартфоны";
+        if (cell.getStringCellValue().equalsIgnoreCase("РЎРјР°СЂС‚С„РѕРЅС‹")) {
+            return "РЎРјР°СЂС‚С„РѕРЅС‹";
         } else {
-            return "аксессуары";
+            return "РђРєСЃРµСЃСЃСѓР°СЂС‹";
         }
     }
 }

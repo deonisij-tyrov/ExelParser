@@ -11,18 +11,21 @@ import java.util.Iterator;
 import java.util.List;
 
 public class FormExel {
-    public void pars(List<FirstFileClass> firstFileClassList, List<SecondFileClass> secondFileClassList) {
+    public void pars(List<FirstFile> firstFileClassList, List<SecondFile> secondFileClassList) {
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("результаты парсиннга");
+        HSSFSheet sheet = workbook.createSheet("my sheet");
 
         int n = 1;
-        Iterator<SecondFileClass> it = secondFileClassList.iterator();
+        Iterator<SecondFile> it = secondFileClassList.iterator();
         while (it.hasNext()) {
-            Row row = sheet.createRow(n);
-            SecondFileClass secondFileClass = it.next();
 
+            SecondFile secondFileClass = it.next();
+//            System.out.println(secondFileClass.getDocNumbers() +" "+ n);
             for (int i = 0; i < firstFileClassList.size(); i++) {
                 if (secondFileClass.getDocNumbers().contains(firstFileClassList.get(i).getDocNumber()) && secondFileClass.getDocNumbers() != null && secondFileClass.getDocNumbers() != "") {
+                    Row row = sheet.createRow(n);
+//                    System.out.println(secondFileClass.getDocNumbers());
+//                    System.out.println(firstFileClassList.get(i).getDocNumber());
                     row.createCell(0).setCellValue(secondFileClass.getId());
                     row.createCell(1).setCellValue(secondFileClass.getDate());
                     row.createCell(2).setCellValue(firstFileClassList.get(i).getDocNumber());
@@ -39,13 +42,13 @@ public class FormExel {
                             System.out.println(e.getMessage());
                         }
                     }
-
                     row.createCell(6).setCellValue(secondFileClass.getEmail());
                     row.createCell(7).setCellValue(secondFileClass.getState());
                     row.createCell(8).setCellValue(firstFileClassList.get(i).getSum());
                     row.createCell(9).setCellValue(secondFileClass.getBuyer());
                     row.createCell(11).setCellValue(secondFileClass.getDocNumbers());
                     row.createCell(12).setCellValue(firstFileClassList.get(i).getDocNumber());
+                    row.createCell(13).setCellValue("test");
                     n++;
                 }
             }
@@ -53,7 +56,7 @@ public class FormExel {
         }
         FileOutputStream out = null;
         try {
-            out = new FileOutputStream(new File("c:\\ide\\resTest.xls"));
+            out = new FileOutputStream(new File("/home/denis/IdeaProjects/resTest.xls"));
             workbook.write(out);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
