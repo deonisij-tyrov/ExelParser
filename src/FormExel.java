@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class FormExel {
-    public void pars(List<FirstFile> firstFileClassList, List<SecondFile> secondFileClassList) {
+    public void pars(List<FirstFile> firstFileClassList, List<SecondFile> secondFileClassList) throws IOException {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("my sheet");
 
@@ -57,10 +57,6 @@ public class FormExel {
         try {
             out = new FileOutputStream(new File("/home/denis/IdeaProjects/resTest.xls"));
             workbook.write(out);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             IOUtils.closeQuietly(out);
         }

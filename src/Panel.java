@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Map;
+import java.io.IOException;
 
 @Data
 public class Panel extends JFrame {
@@ -141,30 +141,19 @@ public class Panel extends JFrame {
     private class FileWorkListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            FormExel formExel = new FormExel();
-            FirstFileLoader firstFileLoader = new FirstFileLoader();
-            firstFileLoader.pars(textField1.getText());
-            SecondFileLoader secondFileClass = new SecondFileLoader();
-            secondFileClass.pars(textField2.getText());
-            formExel.pars(firstFileLoader.getCellMap(), secondFileClass.getCells());
-            JOptionPane.showMessageDialog(null, "OK");
+            try {
+                FormExel formExel = new FormExel();
+                FirstFileLoader firstFileLoader = new FirstFileLoader();
+                firstFileLoader.pars(textField1.getText());
+                SecondFileLoader secondFileClass = new SecondFileLoader();
+                secondFileClass.pars(textField2.getText());
+                formExel.pars(firstFileLoader.getCellMap(), secondFileClass.getCells());
+                JOptionPane.showMessageDialog(null, "OK");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            } catch (IllegalStateException ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
         }
-
-//        private void printFirstFile() {
-//            FirstFileLoader firstFileLoader = new FirstFileLoader();
-//            firstFileLoader.pars(textField1.getText());
-//            Map<Integer, FirstFileClass> map = firstFileLoader.getCellMap();
-//            for (Map.Entry<Integer, FirstFileClass> m : map.entrySet()) {
-//                System.out.println(m.getKey() + " " + m.getValue().toString());
-//            }
-//        }
-//
-//        private void printSecondFile() {
-//            SecondFileLoader secondFileClass = new SecondFileLoader();
-//            secondFileClass.pars(textField2.getText());
-//            for (SecondFileClass f : secondFileClass.getCells()) {
-//                System.out.println(f.toString());
-//            }
-//        }
     }
 }

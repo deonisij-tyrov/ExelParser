@@ -17,19 +17,15 @@ public class SecondFileLoader {
         return cells;
     }
 
-    public void pars(String name) {
+    public void pars(String name) throws IOException, IllegalStateException {
         cells = new ArrayList<>();
 
         InputStream inputStream = null;
         HSSFWorkbook workbook = null;
 
-        try {
-            inputStream = new FileInputStream(name);
-            System.out.println(name);
-            workbook = new HSSFWorkbook(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        inputStream = new FileInputStream(name);
+        System.out.println(name);
+        workbook = new HSSFWorkbook(inputStream);
 
         Sheet sheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = sheet.iterator();

@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -17,19 +18,15 @@ public class FirstFileLoader {
         return cellMap;
     }
 
-    public void pars(String name) {
+    public void pars(String name) throws IOException, IllegalStateException {
         cellMap = new ArrayList<>();
 
         InputStream inputStream = null;
         HSSFWorkbook workbook = null;
 
-        try {
             inputStream = new FileInputStream(name);
             System.out.println(name);
             workbook = new HSSFWorkbook(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         Sheet sheet = workbook.getSheetAt(0);
         Iterator<Row> iterator = sheet.iterator();
